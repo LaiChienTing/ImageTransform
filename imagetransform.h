@@ -1,9 +1,11 @@
 #ifndef IMAGETRANSFORM_H
 #define IMAGETRANSFORM_H
 
-#include <QWidget>
+#include <QMainWindow>
+#include <QWindow>
 #include <QLabel>
 #include <QGroupBox>
+#include <QCheckBox>
 #include <QCheckBox>
 #include <QPushButton>
 #include <QDial>
@@ -24,6 +26,7 @@ public:
     QCheckBox     *hCheckBox;
     QCheckBox     *vCheckBox;
     QPushButton   *mirrorButton;
+    QPushButton   *saveButton;
     QDial         *rotateDial;
     QSpacerItem   *vSpacer;
     QHBoxLayout   *mainLayout;
@@ -35,6 +38,7 @@ public:
 private slots:
     void mirroredImage();
     void rotatedImage();
+    void saveDstImage();
 };
 
 #endif // IMAGETRANSFORM_H
