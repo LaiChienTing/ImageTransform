@@ -3,6 +3,7 @@
 #include <QSizePolicy>
 #include <QPainter>
 #include <QFileDialog>
+#include <QDebug>
 
 ImageTransform::ImageTransform(QWidget *parent)
     : QWidget(parent)
@@ -91,11 +92,12 @@ void ImageTransform::saveDstImage()
 {
     QString filename;
     filename = QFileDialog::getSaveFileName(this, "保存影像", "..\\..\\");
-    QDir saveDir(filename);
+    if (filename.isEmpty())
+        return;
     bool ok;
     if(dstImg.isNull())
-        ok = srcImg.save(saveDir.filePath("test.png"), "PNG", 100);
+        ok = srcImg.save(filename, "PNG", 100);
     else
-        ok = dstImg.save(saveDir.filePath("test.png"), "PNG", 100);
+        ok = dstImg.save(filename, "PNG", 100);
     qDebug() << filename << " " << ok;
 }
